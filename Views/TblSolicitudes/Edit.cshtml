@@ -1,0 +1,232 @@
+﻿@model solicitudescooitza.Models.TblSolicitudes
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="my-3">
+
+                            <div id="transac-directorios" class="col-12">
+
+                                <div class="mb-0"><button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Index", "TblAsignaciones")'" style="box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%); background: #153d77;"><i class="bi bi-backspace-fill"></i></button></div>
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                @Html.HiddenFor(model => model.idTblSolicitudes)
+                                <div class="row px-1 px-sm-1 px-md-12 px-lg-12 text-center">
+                                    <h4 class="text-primary" style="color: #153d77 !important;">Solicitud de Viaticos <span><i class="fa-solid fa-store"></i></span></h4>
+                                </div>
+                                <hr />
+                                <div class="row px-1 px-sm-1 px-md-3 px-lg-4">
+                                    <div class="col-12 col-sm-12  col-md-12 col-lg-12">
+                                        @Html.Label("Proveedor", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-person"></i>
+                                            </span>
+                                            @Html.DropDownList("idCatProveedores", null, htmlAttributes: new { @class = "form-select" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                        @Html.Label("Rubro", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-list-stars"></i>
+                                            </span>
+                                            @Html.DropDownList("idCatRubros", null, htmlAttributes: new { @class = "form-select" })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Monto", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-cash-coin"></i>
+                                            </span>
+
+                                            @Html.EditorFor(model => model.monto, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Fecha", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-calendar-date"></i>
+                                            </span>
+                                           
+                                            @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", type = "date", value = "dd/mm/yyyy" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Cantidad", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-wallet2"></i>
+                                            </span>
+                                            @Html.EditorFor(model => model.cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Imagen", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-image-fill"></i>
+                                            </span>
+                                            @Html.EditorFor(model => model.imagen, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12  col-md-4 col-lg-4">
+                                        @Html.Label("Descripcion", new { @class = "form-label" })
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-person-lines-fill"></i>
+                                            </span>
+                                            @Html.EditorFor(model => model.razon, new { htmlAttributes = new { @class = "form-control", rows = "" } })
+
+                                            @Html.ValidationMessageFor(model => model.razon, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row px-1 px-sm-1 px-md-3 px-lg-4">
+
+
+
+                                    <button type="button" class="btn btn-primary" id="agregar">Agregar</button>
+
+
+                                </div>
+                            </div>
+                            <br />
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Proveedor</th>
+                                        <th scope="col">Rubro</th>
+                                        <th scope="col">Monto</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodySolicitudes">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#agregar").click(function () {
+
+            var idTblSolicitudes = $("#idTblSolicitudes").val();
+            var idCatProveedores = $("#idCatProveedores").val();
+            var idCatRubros = $("#idCatRubros").val();
+            var razon = $("#razon").val();
+            var monto = $("#monto").val();
+            var fecha = $("#fecha").val();
+            var cantidad = $("#cantidad").val();
+            var imagen = $("#imagen").val();
+
+
+            var tblSolicitudes =
+            {
+                idTblSolicitudes: idTblSolicitudes,
+                idCatProveedores: idCatProveedores,
+                idCatRubros: idCatRubros,
+                razon: razon,
+                monto: monto,
+                fecha: fecha,
+                cantidad: cantidad,
+                imagen: imagen
+            }
+            console.log(tblSolicitudes);
+
+            $.ajax({
+                url: "@Url.Action("Edit", "TblSolicitudes")",
+                method: "POST",
+                dataType: "json",
+                data: JSON.stringify(tblSolicitudes),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response.codigo == 1) {
+                        GetSolicitudes();
+                    }
+                    else
+                    {
+                        alert("OCURRIO UN PROBLEMA");
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error en la solicitud AJAX: " + error);
+                }
+            });
+        });
+
+        function GetSolicitudes()
+        {
+              $.ajax({
+                url: "@Url.Action("GetSolicicitudes", "TblSolicitudes")",
+                method: "GET",
+                dataType: "json",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                success: function (response) {
+                    console.log(response);
+                    console.log(response.listado);
+                    pintarDatosEnTabla(response.listado)
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error en la solicitud AJAX: " + error);
+                }
+         });
+        }
+
+
+        function pintarDatosEnTabla(data) {
+            $("#tbodySolicitudes").html(''); // Limpiar el tbody
+            $.each(data, function (key, item) {
+                var html = '';
+                html += '<tr>';
+                html += `<td>${item.Proveedor}</td>`;
+                html += `<td>${item.Rubro}</td>`;
+                html += `<td>${item.razon}</td>`;
+                html += `<td class="fw-bold">${item.monto}</td>`;
+                html += `<td class="fw-bold">${item.fecha}</td>`;
+                html += `<td>${item.cantidad || ''}</td>`;
+                html += `<td>${item.imagen || ''}</td>`;
+                html += `<td class="table-action">
+                <a href="#" id="editar">
+                  <i class="fa-solid fa-pencil"></i>
+                </a>
+              </td>`;
+                html += '</tr>';
+                $("#tbodySolicitudes").append(html);
+            });
+        }
+    });
+</script>

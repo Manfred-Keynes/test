@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba59875eb477474093fb83b5f61e0b55" Name="Diagram1">
+        <EntityTypeShape EntityType="developerModel.CatEstados" Width="1.5" PointX="3" PointY="7.125" />
+        <EntityTypeShape EntityType="developerModel.CatProveedores" Width="1.5" PointX="5.25" PointY="7.25" />
+        <EntityTypeShape EntityType="developerModel.CatRoles" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="developerModel.CatRubros" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="developerModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="developerModel.TblSolicitudes" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="developerModel.TblUsuarios" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="developerModel.database_firewall_rules" Width="1.5" PointX="9.75" PointY="0.75" />
+        <AssociationConnector Association="developerModel.FK_CatRubros_CatEstados" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitud_CatProveedores" />
+        <AssociationConnector Association="developerModel.FK_TblUsuarios_CatRols" />
+        <AssociationConnector Association="developerModel.FK_CatRubros_TblUsuarios" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitud_CatRubros" />
+        <AssociationConnector Association="developerModel.FK_TblSolicitud_TblUsuarios" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

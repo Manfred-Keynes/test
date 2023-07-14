@@ -1,0 +1,107 @@
+﻿@model solicitudescooitza.Models.TblSolicitudes
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TblSolicitudes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.razon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.razon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalQuetzales)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalQuetzales)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalDolares)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalDolares)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatProveedores.Descripcion_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatProveedores.Descripcion_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatRubros.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatRubros.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblUsuarios.primerNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUsuarios.primerNombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idTblSolicitudes }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
